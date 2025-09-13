@@ -3,31 +3,31 @@
 #include <stdbool.h>
 #define max 20
 #define MAX 300
- int N , choix ;
-bool isOpened = false ;
+int N , choix ;
 typedef struct {
-	int ID ;
+     int ID ;
 	char nom [max] ;
 	char prenom [max] ;
 	int numeroMaillot ;
 	char poste [max] ;
 	int age ;
 	int buts ;
+
 } JOUEUR  ;
 
-int compte = 9 ;
+int compte = 10 ;
 int IDcompteur = 10 ;
 JOUEUR joueur [MAX] = {
-        {1,"Lionel", "Messi", 1, 'attaquant', 34,  672},
-        {2,"Cristiano", " Ronaldo", 2, 'attaquant', 36, 674},
-        {3,"Neymar ", " Jr", 3, 'attaquant', 29, 11, 350},
-        {4,"Kevin ", " De Bruyne", 4, 'milieu', 30,  85},
-        {5,"Virgil ", " van Dijk", 5, 'defenseur', 30, 10},
-        {6,"Manuel", " Neuer", 6, 'gardien', 35, 1},
-        {7,"Sadio", " Mané", 7, 'attaquant', 29, 10},
-        {8,"Luka", " Modrić", 8, 'milieu', 35, 10},
-        {9,"Giorgio", " Chiellini", 9, 'defenseur', 37, 3},
-        {10,"Alisson", " Becker", 10, 'gardien', 28, 1}
+        {1,"Lionel", "Messi", 1, "attaquant", 34,  672},
+        {2,"Cristiano", " Ronaldo", 2, "attaquant", 36, 674},
+        {3,"Neymar ", " Jr", 3, "attaquant", 29, 11, 350},
+        {4,"Kevin ", " De Bruyne", 4, "milieu", 30,  85},
+        {5,"Virgil ", " van Dijk", 5, "defenseur", 29, 10},
+        {6,"Manuel", " Neuer", 6, "gardien", 35, 1},
+        {7,"Sadio", " Mané", 7, "attaquant", 29, 10},
+        {8,"Luka", " Modrić", 8, "milieu", 35, 10},
+        {9,"Giorgio", " Chiellini", 9, "defenseur", 37, 3},
+        {10,"Alisson", " Becker", 10, "gardien", 28, 1}
     };
 
 
@@ -50,14 +50,14 @@ void menu ()
 void ajouter ()
 {
 	int choix ;
-  do {
+
 
   	printf ("\t\t========  entrez 1 pour Ajouter un nouveau joueur =============\n\n") ;
   	printf ("\t\tentrez 2 pour Ajouter plusieurs joueurs en une seule operation\n\n") ;
   	scanf ("%d", &choix);
 
-  
-     
+
+
 
       switch (choix)
       {
@@ -131,12 +131,13 @@ void ajouter ()
     	printf ("Le tableau de joueurs est plein.\n") ;
 		   break ;
 
+
 		   default :
-		   	printf ("veuillez entrer 1 ou 2 : \n") ;
+		   	printf ("voter choisi invalide : \n") ;
 		   	break ;
 
 		}
-      }  while (choix != 0);
+
 	}
 
 
@@ -172,15 +173,15 @@ void ajouter ()
 
 	  for (int i = 0 ; i < compte ; i ++ )
 	  {
-	  	printf ("\n\n\t\t\===le joueur : %d==== \n", i + 1) ;
+	  	printf ("\n\n\t\t\t===le joueur : %d==== \n", i + 1) ;
 	  	printf ("\t\t\tle nom : %s \n", joueur[i].nom ) ;
 	  	printf ("\t\t\tle prenom : %s \n", joueur[i].prenom) ;
-	  	printf ("\t\t\tle numero de Maillot : %d \n", joueur[i].numeroMaillot) ;
+	  	printf ("\t\t\tle numero de Maillot : %d \n", joueur[i].numeroMaillot);
 	  	printf ("\t\t\tl age : %d \n", joueur[i].age ) ;
 	  	printf ("\t\t\tle poste : %s \n", joueur[i].poste ) ;
 	  	printf ("\t\t\tle nombre des buts : %d  \n", joueur[i].buts ) ;
 	  	printf ("\t\t\tle ID : %d  \n", joueur[i].ID ) ;
-	  	printf ("\t\t**************************\n\n") ;
+	  	printf ("\t\t\t**************************\n") ;
 
 	  }
 	  break ;
@@ -191,7 +192,7 @@ void ajouter ()
 	  {
 	  	for (int j = 0 ; j < compte - i - 1 ; j ++ )
 	  	{
-	  		if (strcmp (joueur[j].nom, joueur[j + 1].nom) > 0)
+	  		if (joueur[j].age > joueur[j + 1].age )
 	  		{
 				temp = joueur[j];
 				joueur [j] = joueur [j + 1];
@@ -202,7 +203,7 @@ void ajouter ()
 
 	   for (int i = 0 ; i < compte ; i ++ )
 	  {
-	  	printf ("\t\t\n\n===le joueur : %d==== \n", i + 1) ;
+	  	printf ("\n\n\t\t===le joueur : %d==== \n", i + 1) ;
 	  	printf ("\t\t\tle nom : %s \n", joueur[i].nom ) ;
 	  	printf ("\t\t\tle prenom : %s \n", joueur[i].prenom) ;
 	  	printf ("\t\t\tle numero de Maillot : %d \n", joueur[i].numeroMaillot) ;
@@ -485,7 +486,7 @@ void ajouter ()
 
 
     do {
-        
+
           menu () ;
 
 
@@ -498,35 +499,35 @@ void ajouter ()
 
 		case 1:
 			ajouter () ;
-			
+
 			break ;
 
         case 2 :
 			affiche () ;
-            
+
 			break ;
 
 			case 3 :
 			modifie () ;
-            
+
 
 			break ;
 
 			case 4 :
 			supprime () ;
-            
+
 
 			break ;
 
 			case 5 :
 			recherche () ;
-            
+
 
 			break ;
 
 			case 6 :
 				statistique () ;
-                
+
 
 				break ;
 
